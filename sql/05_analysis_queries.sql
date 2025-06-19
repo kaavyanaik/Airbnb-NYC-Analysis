@@ -1,0 +1,4 @@
+-- File: 03_data_cleaning.sql
+-- Purpose: Core analysis queries for Airbnb NYC listings
+-- Author: Kavya Naik
+-- Date: 2025-06-17

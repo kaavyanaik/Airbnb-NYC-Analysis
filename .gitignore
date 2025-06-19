@@ -1,0 +1,33 @@
+# System files
+.DS_Store
+Thumbs.db
+
+# Python cache and logs
+__pycache__/
+*.py[cod]
+*.log
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# VS Code / IDE settings
+.vscode/
+*.code-workspace
+
+# Data files (keep only selected ones)
+*.xlsx
+*.xls
+*.csv
+!data/Airbnb_Open_Data.csv
+!data/cleaned_airbnb.xls
+
+# Power BI
+*.pbix
+
+# SQL Server files
+*.bak
+*.mdf
+*.ldf
+
+# Environment files
+.env
