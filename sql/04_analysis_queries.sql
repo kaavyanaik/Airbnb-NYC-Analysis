@@ -26,23 +26,23 @@ FROM airbnb_cleaned
 GROUP BY neighbourhood_group, room_type
 ORDER BY neighbourhood_group, listing_count DESC;
 
--- Q4: What is the distribution of listings by price range (e.g., 0–100, 101–200, etc.)?
+-- Q4: What is the distribution of listings by price range (e.g., 0â€“100, 101â€“200, etc.)?
 SELECT 
     CASE 
-        WHEN price BETWEEN 0 AND 100 THEN '0–100'
-        WHEN price BETWEEN 101 AND 200 THEN '101–200'
-        WHEN price BETWEEN 201 AND 300 THEN '201–300'
-        WHEN price BETWEEN 301 AND 500 THEN '301–500'
+        WHEN price BETWEEN 0 AND 100 THEN '0â€“100'
+        WHEN price BETWEEN 101 AND 200 THEN '101â€“200'
+        WHEN price BETWEEN 201 AND 300 THEN '201â€“300'
+        WHEN price BETWEEN 301 AND 500 THEN '301â€“500'
         ELSE '500+' 
     END AS price_range,
     COUNT(*) AS listings
 FROM airbnb_cleaned
 GROUP BY 
     CASE 
-        WHEN price BETWEEN 0 AND 100 THEN '0–100'
-        WHEN price BETWEEN 101 AND 200 THEN '101–200'
-        WHEN price BETWEEN 201 AND 300 THEN '201–300'
-        WHEN price BETWEEN 301 AND 500 THEN '301–500'
+        WHEN price BETWEEN 0 AND 100 THEN '0â€“100'
+        WHEN price BETWEEN 101 AND 200 THEN '101â€“200'
+        WHEN price BETWEEN 201 AND 300 THEN '201â€“300'
+        WHEN price BETWEEN 301 AND 500 THEN '301â€“500'
         ELSE '500+' 
     END
 ORDER BY listings DESC;
@@ -102,7 +102,7 @@ WHERE price < 100;
 -- ADVANCED ANALYSIS: Pricing Strategy & Revenue Insights
 -- ======================================================
 
--- Q12: What are the top 10 neighborhoods by total revenue potential (price × availability)?
+-- Q12: What are the top 10 neighborhoods by total revenue potential (price Ã— availability)?
 SELECT TOP 10 neighbourhood, SUM(price * availability_365) AS total_revenue_estimate
 FROM airbnb_cleaned
 GROUP BY neighbourhood
@@ -122,7 +122,7 @@ SELECT neighbourhood, SUM(number_of_reviews) AS total_reviews,
 FROM airbnb_cleaned
 GROUP BY neighbourhood;
 
--- Q15: Identify listings with very low price but high reviews and availability — possibly underpriced.
+-- Q15: Identify listings with very low price but high reviews and availability â€” possibly underpriced.
 SELECT id, name, neighbourhood, price, number_of_reviews, availability_365
 FROM airbnb_cleaned
 WHERE price < 50 AND number_of_reviews > 100 AND availability_365 > 200
@@ -149,7 +149,7 @@ ORDER BY avg_price DESC;
 
 
 
--- Q18: What’s the distribution of review frequency (`reviews_per_month`) across boroughs?
+-- Q18: Whatâ€™s the distribution of review frequency (`reviews_per_month`) across boroughs?
 SELECT neighbourhood_group,
        MIN(reviews_per_month) AS min_rpm,
        AVG(reviews_per_month) AS avg_rpm,
@@ -158,7 +158,7 @@ FROM airbnb_cleaned
 GROUP BY neighbourhood_group;
 
 
--- Q19: What’s the minimum, average, and maximum price for each room type in each borough?
+-- Q19: Whatâ€™s the minimum, average, and maximum price for each room type in each borough?
 SELECT neighbourhood_group, room_type,
        MIN(price) AS min_price,
        AVG(price) AS avg_price,
